@@ -20,8 +20,6 @@ init();
     var firstSample = sampleNames[0];
     buildCharts(firstSample);
     buildMetadata(firstSample);
-  });
-}
 
 // Initialize the dashboard
 init();
@@ -56,48 +54,55 @@ function buildMetadata(sample) {
   });
 }
 
-// // 1. Create the buildCharts function.
-// function buildCharts(sample) {
-//   // 2. Use d3.json to load and retrieve the samples.json file 
-//   d3.json("samples.json").then((data) => {
-//     // 3. Create a variable that holds the samples array. 
-//     var samples = data.samples;
-//     // Filter the data for the object with the desired sample number
+// 1. Create the buildCharts function.
+function buildCharts(sample) {
+  // 2. Use d3.json to load and retrieve the samples.json file 
+  d3.json("samples.json").then((data) => {
+    // 3. Create a variable that holds the samples array. 
+    var samples = data.samples;
+    // Filter the data for the object with the desired sample number
     
-//     // 4. Create a variable that filters the samples for the object with the desired sample number.
-//     var samplesArray = samples.filter(sampleObj => sampleObj.id == sample);
-//     //  5. Create a variable that holds the first sample in the array.
-//     var samplesResult = samplesArray[0];
+    // 4. Create a variable that filters the samples for the object with the desired sample number.
+    var samplesArray = samples.filter(sampleObj => sampleObj.id == sample);
+    //  5. Create a variable that holds the first sample in the array.
+    var samplesResult = samplesArray[0];
 
-//     // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
-//     var otuIds = samplesResult.otu_ids;
-//     var otuLabels = samplesResult.otu_labels;
-//     var sampleValues = samplesResult.sample_values;
+    // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
+    var otuIds = samplesResult.otu_ids;
+    var otuLabels = samplesResult.otu_labels;
+    var sampleValues = samplesResult.sample_values;
     
 
-//     // 7. Create the yticks for the bar chart.
-//     // Hint: Get the the top 10 otu_ids and map them in descending order  
-//     //  so the otu_ids with the most bacteria are last. 
-//     var sortedOtuIds = otuIds.sort((a,b) => a-b)
-//     var yticks = sortedOtuIds.slice(0,10)
+    // 7. Create the yticks for the bar chart.
+    // Hint: Get the the top 10 otu_ids and map them in descending order  
+    //  so the otu_ids with the most bacteria are last. 
+    var topTenIds = otuIds.slice(0, 10);
+    var idsSorted = topTenIds.reverse();
+
+    var topTenValues = sampleValues.slice(0, 10);
+    var valuesSorted = topTenValues.reverse();
+
+    var yticks = idsSorted.map(otuIds => `OTU ${otuIds}`);
+    var xticks = valuesSorted;
+    var labels = otuLabels.slice(0, 10).reverse();
     
-//     // 8. Create the trace for the bar chart. 
-//     var trace = {
-//       x: sampleValues
-//       y: yticks
-//       type: "bar"
-//     };
+    // 8. Create the trace for the bar chart. 
+    var trace = {
+      x: xticks,
+      y: yticks,
+      type: "bar"
+    };
     
-//     var barData = [trace];
+    var barData = [trace];
       
-//     // 9. Create the layout for the bar chart. 
-//     var barLayout = {
-//       title: "Belly Button Biodiversity Bar Chart",
-//       xaxis: { title: "Sample Values"},
-//       yaxis: { title: "Amount of Bacteria"}
-//      };
+    // 9. Create the layout for the bar chart. 
+    var barLayout = {
+      title: "Belly Button Biodiversity Bar Chart",
+      xaxis: { title: "Sample Values"},
+      yaxis: { title: "Amount of Bacteria"}
+     };
   
-//     // 10. Use Plotly to plot the data with the layout. 
-//     Plotly.newPlot("plotArea", barData, barLayout);  
-//   });
-// }
+    // 10. Use Plotly to plot the data with the layout. 
+    Plotly.newPlot("plotArea", barData, barLayout);  
+  });
+}
