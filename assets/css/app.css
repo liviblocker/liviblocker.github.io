@@ -20,7 +20,7 @@ h3 {
     font-size: 1.5rem;
     letter-spacing: 1px;
     text-align: center;
-    color: #0e5eab;
+    color: #2e3241;
 }
 
 h5 {
@@ -54,8 +54,8 @@ h5 {
 }
 
 .fragment-one {
-    background-color: #fae4c9;
-    color: #f08582;
+    background-color: #f4e3b2;
+    color: #cf5c36;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -80,8 +80,8 @@ h5 {
 }
 
 .fragment-two {
-    background-color: #fff9f1;
-    color: #f84a12;
+    background-color: #e5be9e;
+    color: 6d0a1a;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -96,12 +96,12 @@ h5 {
 }
 
 .fragment-two p, .fragment-two i {
-    color: #0e5eab
+    color: #2e3241
 }
 
 .fragment-three {
     background-color: #ffffff;
-    color: #0e5eab;
+    color: #2e3241;
 }
 
 .fragment-three .carousel {
@@ -124,8 +124,8 @@ h5 {
 }
 
 .fragment-four {
-    background-color: #fae8e3;
-    color: #0e5eab;
+    background-color: #efc88b;
+    color: #2e3241;
 }
 
 .fragment-four i {
@@ -133,7 +133,7 @@ h5 {
 }
 
 .fragment-four .labels {
-    color: #657b83;
+    color: #f4e3b2;
     margin: 10px;
     text-align: center;
     min-width: 70%;
@@ -154,9 +154,9 @@ h5 {
 
 
 .fragment-five {
-    background-color: #fee4c6;
+    background-color: #efc88b;
     padding: 50px;
-    color: #f84a12;
+    color: #cf5c36;
     text-align: center; 
 }
 
@@ -177,7 +177,7 @@ h5 {
 }
 
 .fragment-six h6 {
-    color: #f84a12;
+    color: #cf5c36;
     font-family: 'Playfair Display', serif;
     font-size: 2rem;
     font-weight: 900;
